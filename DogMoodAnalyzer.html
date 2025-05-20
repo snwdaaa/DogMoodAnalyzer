@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강아지 기분 분석기</title>
+</head>
+<body>
+    <div>
+        <h1>🐶 댕댕이의 기분을 알아보자 🐶</h1>
+        <img id="dogImage" width="640" height="640" src="" alt="강아지 사진">
+        <!-- 바운딩 박스 그릴 캔버스 -->
+        <canvas id="overlayCanvas" width="640" height="640" style="position: absolute; top: 0; left: 0; pointer-events: none;"></canvas>
+        <br><br>
+        <button onclick="LoadRandomDogImage();">랜덤 강아지 사진 가져오기</button><br>
+        <button id="analyzeBtn">분석하기</button>
+    </div>
+
+    <!-- JS 파일 가져오기 -->
+    <!-- CDN이 로드된 후에 실행돼야 함 -->
+    <script src="./RandomDogImage.js"></script>
+    <script type="module" src="./DogEmotion.js"></script>
+</body>
+</html>
