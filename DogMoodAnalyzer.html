@@ -8,17 +8,25 @@
 <body>
     <div>
         <h1>🐶 댕댕이의 기분을 알아보자 🐶</h1>
-        <img id="dogImage" width="640" height="640" src="" alt="강아지 사진">
+        <!-- 이미지 / 플레이스홀더 -->
+        <img id="dogImage" width="640" height="640" src="res/placeholder.png" alt="강아지 사진">
         <!-- 바운딩 박스 그릴 캔버스 -->
         <canvas id="overlayCanvas" width="640" height="640" style="position: absolute; top: 0; left: 0; pointer-events: none;"></canvas>
-        <br><br>
-        <button onclick="LoadRandomDogImage();">랜덤 강아지 사진 가져오기</button><br>
-        <button id="analyzeBtn">분석하기</button>
+        <br>
+        <div>
+            <p>랜덤 강아지 사진 가져오기</p>
+            <button onclick="LoadRandomDogImage();">사진 가져오기</button><br>
+        </div>
+        <div>
+            <p>강아지 사진 업로드</p>
+            <input type="file" id="imageInput" accept="image/*">
+        </div>
+        <hr>
+        <button id="analyzeBtn">분석</button>
     </div>
 
     <!-- JS 파일 가져오기 -->
-    <!-- CDN이 로드된 후에 실행돼야 함 -->
-    <script src="./RandomDogImage.js"></script>
+    <script src="./ImageManager.js"></script>
     <script type="module" src="./DogEmotion.js"></script>
 </body>
 </html>

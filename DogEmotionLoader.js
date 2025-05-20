@@ -1,1 +1,0 @@
-//const inferEngine = new InferenceEngine(); // InferenceEngine 가져오기

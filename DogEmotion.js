@@ -47,7 +47,7 @@ function DrawBBOX(image, results) {
         }
         const label = classLabels[obj.class] || "unknown";
         const confidence = obj.confidence; // 신뢰도
-        const color = obj.color;
+        const color = "rgb(255, 0, 0)"; // CSS 태그를 문자열로 파싱해서 사용
 
         // 왼쪽 위 기준 좌표 계산 (스케일 고려)
         const left = (x - width / 2) * scaleX;
@@ -61,8 +61,9 @@ function DrawBBOX(image, results) {
         context.strokeRect(left, top, boxWidth, boxHeight);
 
         // 라벨
-        context.font = "16px sans-serif";
+        context.font = "bold 25px sans-serif";
         context.fillStyle = color;
+        context.shadowBlur = 15;
         context.fillText(`${label} (${(confidence * 100).toFixed(1)}%)`, left + 4, top - 6);
     });
 }
