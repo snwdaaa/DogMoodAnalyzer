@@ -4,18 +4,34 @@ const MODEL_NAME = "emotions-5jlfd";
 const MODEL_VERSION = 2;
 const PUBLISHABLE_KEY = "rf_4Y9I5h58aHccAsPHtwgu6VDCwVy1";
 
-const engine = new InferenceEngine();
-const workerId = await engine.startWorker(
-    MODEL_NAME,
-    MODEL_VERSION,
-    PUBLISHABLE_KEY
-);
+let engine;
+let workerId;
+
+export async function LoadEmotionModel() {
+    engine = new InferenceEngine();
+    workerId = await engine.startWorker(
+        MODEL_NAME,
+        MODEL_VERSION,
+        PUBLISHABLE_KEY
+    );
+
+    while(!engine) { // 추론 엔진 로드될 때까지 대기하게 함
+        await new Promise(resolve => setTimeout(resolve, 50));
+    }
+
+    return true;
+}
 
 document.getElementById("analyzeBtn").addEventListener("click", async () => {
     const image = document.getElementById("dogImage");
     const cvimg = new CVImage(image);
     const results = await engine.infer(workerId, cvimg);
-    DrawBBOX(image, results);
+
+    // results 빈 리스트면 alert 출력
+    if (results.length == 0)
+        alert("인식에 실패했습니다! 다른 사진으로 시도하세요.");
+    else
+        DrawBBOX(image, results);
     console.log(results);
 });
 

@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="DogMoodAnalyzer.css" rel="stylesheet" type="text/css">
     <title>강아지 기분 분석기</title>
 </head>
 <body>
-    <div>
+    <!-- 로딩 화면 -->
+    <div id="loadingScreen">
+        <h1>잠시 기다려주세요...</h1>
+        <div class="spinner"></div>
+    </div>
+
+    <!-- 메인 화면 -->
+    <div id="mainContent" style="display: none;"> <!-- 기본적으로 none으로 숨겼다가 API 로딩 끝나면 표시 -->
         <h1>🐶 댕댕이의 기분을 알아보자 🐶</h1>
         <!-- 이미지 / 플레이스홀더 -->
         <img id="dogImage" width="640" height="640" src="res/placeholder.png" alt="강아지 사진">
@@ -28,5 +36,6 @@
     <!-- JS 파일 가져오기 -->
     <script src="./ImageManager.js"></script>
     <script type="module" src="./DogEmotion.js"></script>
+    <script type="module" src="./APILoadManager.js"></script>
 </body>
 </html>
