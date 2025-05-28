@@ -53,3 +53,28 @@ fileInput.addEventListener("change", (event) => { // change 이벤트 -> 이미�
         console.error("이미지 파일 로드 실패:", err);
     }
 })
+
+// BBOX가 포함된 최종 이미지 저장
+function SaveFinalImage() {
+    const dogImage = document.getElementById("dogImage");
+    const overlay = document.getElementById("overlayCanvas");
+
+    // dogImage와 overlay 캔버스를 합침
+    const finalCanvas = document.createElement("canvas");
+    finalCanvas.width = dogImage.width;
+    finalCanvas.height = dogImage.height;
+
+    const ctx = finalCanvas.getContext("2d");
+    ctx.drawImage(dogImage, 0, 0, dogImage.width, dogImage.height); // 강아지 사진을 canvas에 그림
+    ctx.drawImage(overlay, 0, 0, overlay.width, overlay.height); // BBOX를 canvas에 그림
+
+    // 다 합쳐진 canvas를 다운로드
+    finalCanvas.toBlob(function(blob) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "Analyzed_Result.png";
+        a.click();
+        URL.revokeObjectURL(url); // 메모리 해제
+    })
+}

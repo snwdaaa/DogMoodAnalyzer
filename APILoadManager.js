@@ -16,6 +16,6 @@ window.addEventListener("DOMContentLoaded", async () => {
         loadingScreen.style.display = "none";
         mainContent.style.display = "block";
     } catch (e) {
-        console.error("API 로딩 실패", e);
+        console.error("API 로드 실패", e);
     }
 })
