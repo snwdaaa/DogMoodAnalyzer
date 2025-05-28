@@ -67,7 +67,7 @@ function DrawBBOX(image, results) {
 
         // 왼쪽 위 기준 좌표 계산 (스케일 고려)
         const left = (x - width / 2) * scaleX;
-        const top = ((y - height / 2) * scaleY) + 100; // 가중치 100 줘서 내림
+        const top = ((y - height / 2) * scaleY);
         const boxWidth = width * scaleX;
         const boxHeight = height * scaleY;
 

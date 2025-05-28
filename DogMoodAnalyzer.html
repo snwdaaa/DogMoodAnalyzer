@@ -17,9 +17,11 @@
     <div id="mainContent" style="display: none;"> <!-- 기본적으로 none으로 숨겼다가 API 로딩 끝나면 표시 -->
         <h1>🐶 댕댕이의 기분을 알아보자 🐶</h1>
         <!-- 이미지 / 플레이스홀더 -->
-        <img id="dogImage" width="640" height="640" src="res/placeholder.png" alt="강아지 사진">
-        <!-- 바운딩 박스 그릴 캔버스 -->
-        <canvas id="overlayCanvas" width="640" height="640" style="position: absolute; top: 0; left: 0; pointer-events: none;"></canvas>
+        <div style="position: relative; width: 640px; height: 640px;">
+            <img id="dogImage" style="position: absolute; top: 0; left: 0; width: 640px; height: 640px;" src="res/placeholder.png" alt="강아지 사진">
+            <!-- 바운딩 박스 그릴 캔버스 -->
+            <canvas id="overlayCanvas" width="640" height="640" style="position: absolute; top: 0; left: 0; pointer-events: none;"></canvas>
+        </div>
         <br>
         <div>
             <p>랜덤 강아지 사진 가져오기</p>
