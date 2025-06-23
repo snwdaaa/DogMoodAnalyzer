@@ -4,43 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="DogMoodAnalyzer.css" rel="stylesheet" type="text/css">
+    <link href="FrostedGlass.css" rel="stylesheet" type="text/css">
     <title>강아지 기분 분석기</title>
 </head>
 <body>
-    <!-- 로딩 화면 -->
-    <div id="loadingScreen" class="ios-nav">
-        <h1>잠시 기다려주세요...</h1>
-        <div class="spinner"></div>
-    </div>
+    <div class="background-wrapper">
+        <div class="frosted-box">
+            <!-- 로딩 화면 -->
+            <div id="loadingScreen" class="ios-nav">
+                <h1>잠시 기다려주세요...</h1>
+                <div class="spinner"></div>
+            </div>
+            
+            <!-- 메인 화면 -->
+            <div id="mainContent" class="main-content" style="display: none;"> <!-- 기본적으로 none으로 숨겼다가 API 로딩 끝나면 표시 -->
+                <div class="ios-nav" id="header">
+                    <h1>🐶 강아지 기분 분석기 🐶</h1>
+                </div>
+                
+                <div class="center-box">
+                    <!-- 이미지 / 플레이스홀더 -->
+                    <div style="position: relative; width: 640px; height: 640px;">
+                        <img id="dogImage" style="position: absolute; top: 0; left: 0; width: 640px; height: 640px;" src="res/placeholder.png" alt="강아지 사진">
+                        <!-- 바운딩 박스 그릴 캔버스 -->
+                        <canvas id="overlayCanvas" width="640" height="640" style="position: absolute; top: 0; left: 0; pointer-events: none;"></canvas>
+                    </div>
 
-    <!-- 메인 화면 -->
-    <div id="mainContent" class="main-content" style="display: none;"> <!-- 기본적으로 none으로 숨겼다가 API 로딩 끝나면 표시 -->
-        <div class="ios-nav" id="header">
-            <h1>🐶 댕댕이의 기분을 알아보자 🐶</h1>
-        </div>
-        
-        <div class="center-box">
-            <!-- 이미지 / 플레이스홀더 -->
-            <div style="position: relative; width: 640px; height: 640px;">
-                <img id="dogImage" style="position: absolute; top: 0; left: 0; width: 640px; height: 640px;" src="res/placeholder.png" alt="강아지 사진">
-                <!-- 바운딩 박스 그릴 캔버스 -->
-                <canvas id="overlayCanvas" width="640" height="640" style="position: absolute; top: 0; left: 0; pointer-events: none;"></canvas>
-            </div>
-        </div>
-        <br>
-
-        <div>
-            <div>
-                <p>랜덤 강아지 사진 가져오기</p>
-                <button class="ios-button" onclick="LoadRandomDogImage();">사진 가져오기</button><br>
-            </div>
-            <div>
-                <p>강아지 사진 업로드</p>
-                <input type="file" id="imageInput" accept="image/*">
-            </div>
-            <hr>
-            <button class="ios-button" id="analyzeBtn">분석</button>
-            <button class="ios-button" onclick="SaveFinalImage()" id="downloadBtn">이미지 저장</button>
+                    <div class="centerButtons imageButtons">
+                        <!--<p>랜덤 강아지 사진 가져오기</p>-->
+                        <button class="ios-button" onclick="LoadRandomDogImage();">랜덤 사진 가져오기</button>
+                        <br>
+                        <p>또는</p>
+                        <br>
+                        <input type="file" id="imageInput" class="ios-button" accept="image/*">
+                    </div>
+                    <div class="centerButtons">
+                        <button class="ios-button" id="analyzeBtn">분석</button>
+                        <button class="ios-button" onclick="SaveFinalImage()" id="downloadBtn">이미지 저장</button>
+                    </div>
+                </div>
+            </div>  
         </div>
     </div>
 
